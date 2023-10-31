@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Produktsuche</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="head">
+      <div class="header-content">
+        <div>
+          <h1>Produktsuche</h1>
+        </div>
+        <div class="searchbar">
+          <form class="search" id="search">
+            <input
+              class="form"
+              type="search"
+              placeholder="Suchen"
+              aria-label="Search"
+              name="search"
+            />
+            <button class="buttonSearch" type="submit">
+              <img src="img/lupe.png" height="10" width="10" />
+            </button>
+          </form>
+        </div>
+
+        <nav>
+          <ul>
+            <li>
+              <a href="index.html"
+                ><img src="img/home.svg" width="15" height="15" />Home</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <div id="placeholder-text">
+        <h4>Willkommen zur Produktsuchseite!</h4>
+        <p>
+          Hier können Sie nach verschiedenen Produkten suchen. Ich verwende die
+          Daten von
+          <a href="https://dummyjson.com/" target="_blank">dummyjson.com</a> für
+          die Produktinformationen. Geben Sie einfach Ihr Suchwort ein und
+          starten Sie die Suche.
+        </p>
+      </div>
+
+      <div class="container mt-5" id="content">
+        <div class="d-flex flex-wrap" id="search-results"></div>
+      </div>
+    </main>
+
+    <script src="index.js"></script>
+
+    <footer>
+      <div>
+        <nav>
+          <ul>
+            <li>
+              <a href="aboutUs.html">Über mich</a>
+            </li>
+          </ul>
+          <ul>
+            <li>
+              <a href="impressum.html">Impressum</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </footer>
+  </body>
+</html>
