@@ -5,6 +5,8 @@
     <title>Produktsuche</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="style.css" />
+    <script src="index.js"></script>
+    <script src="detail.js"></script>
   </head>
   <body>
     <header class="head">
@@ -56,19 +58,45 @@
       </div>
     </main>
 
-    <script src="index.js"></script>
+    <div id="produktdetails">
+      <div id="image-slider"></div>
+      <div id="product-details"></div>
+      <div id="similar-products-container"></div>
+    </div>
+
+    <div id="aboutUs" style="display: none">
+      <h4>Über mich</h4>
+      <p>
+        Willkommen auf meiner Website! Ich verwende
+        <a href="https://dummyjson.com/" target="_blank">dummyjson.com</a>, um
+        Beispielprodukte aus dieser API anzuzeigen. Unser Ziel ist es, Ihnen
+        eine benutzerfreundliche Erfahrung zu bieten und sicherzustellen, dass
+        Sie leicht auf die Informationen zugreifen können, die Sie suchen. Wir
+        hoffen, Sie finden unsere Website klar und hilfreich. Bei Fragen oder
+        Feedback stehen wir Ihnen gerne zur Verfügung.
+      </p>
+    </div>
+    <div id="impressum" style="display: none">
+      <h4>Kontakt</h4>
+      <p>Jule Kassner</p>
+      <p>Musterstraße 8</p>
+      <p>12345 Musterstadt</p>
+      <p>E-Mail: julekassner@web.de</p>
+      <p>Telefon: 123456789012</p>
+    </div>
+  
 
     <footer>
       <div>
         <nav>
           <ul>
             <li>
-              <a href="aboutUs.html">Über mich</a>
+              <a href="aboutUs.html" id="aboutUsSeite">Über mich</a>
             </li>
           </ul>
           <ul>
             <li>
-              <a href="impressum.html">Impressum</a>
+              <a href="impressum.html" id="impressumSeite">Impressum</a>
             </li>
           </ul>
         </nav>
