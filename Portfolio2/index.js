@@ -1,5 +1,4 @@
 window.addEventListener("load", () => {
-
   document.querySelector("header").classList.remove("header-fixed");
 
   document
@@ -7,6 +6,7 @@ window.addEventListener("load", () => {
     .addEventListener("submit", function (event) {
       event.preventDefault();
       hidePlaceholderText();
+      hideProductDetails();
       search();
     });
 
@@ -33,13 +33,30 @@ window.addEventListener("load", () => {
   function clearPageContent() {
     const content = document.getElementById("content");
     content.innerHTML = "";
+    const produktDetails = document.getElementById("produktdetails");
+    if (produktDetails) {
+      produktDetails.style.display = "none";
+    }
+  }
+
+  function hideProductDetails() {
+    const productDetails = document.getElementById("produktdetails");
+    if (productDetails) {
+      productDetails.style.display = "none";
+    }
   }
 
   function search() {
     const query = document.querySelector('input[name="search"]').value;
+    const errorContainer = document.getElementById("error-message");
 
-    if (query && query.length > 2) {
+    if (query.length > 2) {
       fetchData(query);
+      errorContainer.style.display = "none";
+    } else {
+      errorContainer.textContent =
+        "Die Suchanfrage muss mindestens 3 Zeichen enthalten.";
+      errorContainer.style.display = "block";
     }
   }
 
@@ -73,16 +90,24 @@ window.addEventListener("load", () => {
       .catch((error) => {
         console.error("Es gab einen Fehler beim Abrufen der Daten:", error);
       });
-    }
-  
+  }
 
   function displayResults(results) {
     const resultsContainer = document.getElementById("search-results");
-    results.forEach((data) => {
-      const card = document.createElement("div");
-      card.classList.add();
+    const errorContainer = document.getElementById("error-message");
+    resultsContainer.innerHTML = "";
 
-      const cardHtml = `
+    if (results.length === 0) {
+      errorContainer.textContent = "Es wurden keine Produkte gefunden.";
+      errorContainer.style.display = "block";
+    } else {
+      errorContainer.style.display = "none";
+
+      results.forEach((data) => {
+        const card = document.createElement("div");
+        card.classList.add();
+
+        const cardHtml = `
           <div class="card" style="width: 18rem;">
             <figure>
               <img src="${
@@ -100,8 +125,9 @@ window.addEventListener("load", () => {
           </div>
           `;
 
-      card.innerHTML = cardHtml;
-      resultsContainer.appendChild(card);
-    });
+        card.innerHTML = cardHtml;
+        resultsContainer.appendChild(card);
+      });
+    }
   }
 });

@@ -48,23 +48,13 @@ window.addEventListener("load", () => {
       .querySelector("#produktdetails")
       .addEventListener("click", function () {
         const headerHeight = document.querySelector("header").clientHeight;
-        document
-          .getElementById("produktdetails")
-          .scrollIntoView({
-            behavior: "smooth",
-            block: "start",
-            inline: "start",
-          });
-        window.scrollBy(0, -headerHeight); // Scrollen um die Header-Höhe nach oben verschieben
+        document.getElementById("produktdetails").scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+          inline: "start",
+        });
+        window.scrollBy(0, -headerHeight); 
       });
-
-    /*document
-      .querySelector("#produktdetails")
-      .addEventListener("click", function () {
-        document
-          .getElementById("produktdetails")
-          .scrollIntoView({ behavior: "smooth", block: "start" });
-      });*/
 
     document
       .getElementById("search-results")
@@ -89,7 +79,6 @@ window.addEventListener("load", () => {
         console.error("Fehler beim Abrufen der Produktinformationen:", error);
       });
 
-    // Funktion zum Erstellen des Bildsliders
     function createImageSlider(imageUrls) {
       const slider = document.getElementById("image-slider");
       let currentImageIndex = 0;
