@@ -1,16 +1,20 @@
 window.addEventListener("load", () => {
+  // Überprüfen, ob eine Produkt-ID in der URL vorhanden ist
   const urlParams = new URLSearchParams(window.location.search);
   const productId = urlParams.get("id");
   if (productId) {
     const apiUrl = `https://dummyjson.com/products/${productId}`;
 
+    // Verbergen des Platzhaltertexts
     const placeholderText = document.getElementById("placeholder-text");
     if (placeholderText) {
       placeholderText.style.display = "none";
     }
 
+    // Festlegen des Header-Fixierungsstils
     document.querySelector("header").classList.add("header-fixed");
 
+    // Event Listener für Klicks auf den "About Us" Link
     document
       .getElementById("aboutUsSeite")
       .addEventListener("click", function (event) {
@@ -19,6 +23,7 @@ window.addEventListener("load", () => {
         hideProductDetails();
       });
 
+    // Event Listener für Klicks auf den "Impressum" Link
     document
       .getElementById("impressumSeite")
       .addEventListener("click", function (event) {
@@ -27,16 +32,19 @@ window.addEventListener("load", () => {
         hideProductDetails();
       });
 
+    // Funktion zum Anzeigen des "About Us" Texts
     function showAboutUsText() {
       document.getElementById("aboutUs").style.display = "block";
       document.getElementById("impressum").style.display = "none";
     }
 
+    // Funktion zum Anzeigen des "Impressum" Texts
     function showImpressumText() {
       document.getElementById("impressum").style.display = "block";
       document.getElementById("aboutUs").style.display = "none";
     }
 
+    // Funktion zum Ausblenden der Produktdetails
     function hideProductDetails() {
       const productDetails = document.getElementById("produktdetails");
       if (productDetails) {
@@ -44,6 +52,7 @@ window.addEventListener("load", () => {
       }
     }
 
+    // Event Listener für den Klick auf die Produktdetails
     document
       .querySelector("#produktdetails")
       .addEventListener("click", function () {
@@ -53,9 +62,10 @@ window.addEventListener("load", () => {
           block: "start",
           inline: "start",
         });
-        window.scrollBy(0, -headerHeight); 
+        window.scrollBy(0, -headerHeight);
       });
 
+    // Event Listener für Klicks auf ein Produkt in den Suchergebnissen
     document
       .getElementById("search-results")
       .addEventListener("click", function (event) {
@@ -67,6 +77,7 @@ window.addEventListener("load", () => {
         }
       });
 
+    // Abrufen von Produktinformationen und Anzeigen der Produktdetails
     fetch(apiUrl)
       .then((res) => res.json())
       .then((productDetails) => {
@@ -79,6 +90,7 @@ window.addEventListener("load", () => {
         console.error("Fehler beim Abrufen der Produktinformationen:", error);
       });
 
+    // Funktion zum Erstellen des Bildsliders
     function createImageSlider(imageUrls) {
       const slider = document.getElementById("image-slider");
       let currentImageIndex = 0;
@@ -117,6 +129,8 @@ window.addEventListener("load", () => {
       slider.appendChild(nextArrow);
     }
   }
+
+  // Funktion zum Anzeigen der Produktdetails auf der Seite
   function displayProductDetails(productDetails) {
     const productContainer = document.getElementById("product-details");
 
@@ -136,6 +150,7 @@ window.addEventListener("load", () => {
     productContainer.innerHTML = productHtml;
   }
 
+  // Funktion zum Abrufen und Anzeigen ähnlicher Produkte
   function fetchSimilarProducts(category) {
     const apiUrl = `https://dummyjson.com/products/category/${category}`;
 
@@ -158,6 +173,7 @@ window.addEventListener("load", () => {
       });
   }
 
+  // Funktion zum Anzeigen ähnlicher Produkte auf der Seite
   function displaySimilarProducts(similarProducts) {
     const similarProductsContainer = document.getElementById(
       "similar-products-container"
