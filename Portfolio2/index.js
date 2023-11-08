@@ -1,6 +1,8 @@
 window.addEventListener("load", () => {
+  // Entfernen der "header-fixed" Klasse aus dem Header
   document.querySelector("header").classList.remove("header-fixed");
 
+  // Event Listener für das Suchformular
   document
     .querySelector("#search")
     .addEventListener("submit", function (event) {
@@ -10,6 +12,7 @@ window.addEventListener("load", () => {
       search();
     });
 
+  // Event Listener für Klicks auf den "Über mich" Link
   document
     .getElementById("aboutUsSeite")
     .addEventListener("click", function (event) {
@@ -20,6 +23,7 @@ window.addEventListener("load", () => {
       document.getElementById("placeholder-text").style.display = "none";
     });
 
+  // Event Listener für Klicks auf den "Impressum" Link
   document
     .getElementById("impressumSeite")
     .addEventListener("click", function (event) {
@@ -30,6 +34,7 @@ window.addEventListener("load", () => {
       document.getElementById("placeholder-text").style.display = "none";
     });
 
+  // Funktion zum Löschen des Seiteninhalts
   function clearPageContent() {
     const content = document.getElementById("content");
     content.innerHTML = "";
@@ -39,6 +44,7 @@ window.addEventListener("load", () => {
     }
   }
 
+  // Funktion zum Ausblenden der Produktdetails
   function hideProductDetails() {
     const productDetails = document.getElementById("produktdetails");
     if (productDetails) {
@@ -46,6 +52,7 @@ window.addEventListener("load", () => {
     }
   }
 
+  // Funktion zur Verarbeitung der Suchanfrage
   function search() {
     const query = document.querySelector('input[name="search"]').value;
     const errorContainer = document.getElementById("error-message");
@@ -60,6 +67,7 @@ window.addEventListener("load", () => {
     }
   }
 
+  // Funktion zum Ausblenden des Platzhaltertexts
   function hidePlaceholderText() {
     const placeholderText = document.getElementById("placeholder-text");
     if (placeholderText) {
@@ -67,6 +75,7 @@ window.addEventListener("load", () => {
     }
   }
 
+  // Funktion zum Abrufen von Produktdaten basierend auf der Suchanfrage
   function fetchData(query) {
     const resultsContainer = document.getElementById("search-results");
     resultsContainer.innerHTML = "";
@@ -92,6 +101,7 @@ window.addEventListener("load", () => {
       });
   }
 
+  // Funktion zur Anzeige der Suchergebnisse
   function displayResults(results) {
     const resultsContainer = document.getElementById("search-results");
     const errorContainer = document.getElementById("error-message");
